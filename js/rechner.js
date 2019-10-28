@@ -28,21 +28,31 @@ for(let i=0;i<hello.length;i++)
                     let number1= parseFloat(output.innerHTML.slice(0,output.innerHTML.indexOf('/')));
                     let number2=parseFloat(output.innerHTML.slice(output.innerHTML.indexOf('/')+1));
                     output.innerHTML = number1 / number2 ;
-                }else  if(output.innerHTML.includes('-') && !isNaN(output.innerHTML.slice(output.innerHTML.lastIndexOf())) )
+                }else  if(!(output.innerHTML.substr(1)).includes('-') && output.innerHTML.includes('-') && !isNaN(output.innerHTML.slice(output.innerHTML.lastIndexOf())) )
                 {   
                     let number1= parseFloat(output.innerHTML.slice(0,output.innerHTML.indexOf('-')));
-                    
                     let number2=parseFloat(output.innerHTML.slice(output.innerHTML.indexOf('-')+1));
-                    
+                    output.innerHTML = number1 - number2 ;
+                }else  if((output.innerHTML.substr(1)).includes('-') && !isNaN(output.innerHTML.slice(output.innerHTML.lastIndexOf())) )
+                {   
+                    let number1= '-' + parseFloat(output.innerHTML.slice(1,output.innerHTML.indexOf('-')-1));
+                     console.log(number1);
+                     let number2=parseFloat(output.innerHTML.slice(((output.innerHTML.substr(1)).indexOf('-')+2)));
+                     console.log(number2); 
                     output.innerHTML = number1 - number2 ;
                 }
             }
-            else if(e.target.defaultValue == "+" || e.target.defaultValue == "-" || e.target.defaultValue == "*" || e.target.defaultValue == "/") 
+            else if(e.target.defaultValue == "+" || e.target.defaultValue == "*" || e.target.defaultValue == "/") 
             { 
                        if( !isNaN(output.innerHTML) && output.innerHTML != "" && output.innerHTML.slice(output.innerHTML.lastIndexOf()) != '.')
                        {
                         output.innerHTML += e.target.defaultValue;
                        }
+            }else if(e.target.defaultValue == "-"){
+                if( !isNaN(output.innerHTML) && output.innerHTML.slice(output.innerHTML.lastIndexOf()) != '.')
+                {
+                 output.innerHTML += e.target.defaultValue;
+                }
             }
             else if(e.target.defaultValue == 'ln') {
                     if(!isNaN(output.innerHTML) && !isNaN(Math.log(output.innerHTML))  && output.innerHTML != "") 
@@ -72,9 +82,6 @@ for(let i=0;i<hello.length;i++)
                     {
                         output.innerHTML += e.target.defaultValue;
                     }else if(output.innerHTML.includes('+')||output.innerHTML.includes('*')||output.innerHTML.includes('/')||output.innerHTML.includes('-')){
-                        console.log(output.innerHTML.indexOf('+'));
-                        console.log(output.innerHTML.substr(output.innerHTML.indexOf('+')+1));
-                        console.log(output.innerHTML.substr(output.innerHTML.indexOf('+')+1).indexOf('.'));
                         if( output.innerHTML.substr(output.innerHTML.indexOf('+')+1).indexOf('.') == '-1' || output.innerHTML.substr(output.innerHTML.indexOf('*')+1).indexOf('.') == '-1' || output.innerHTML.substr(output.innerHTML.indexOf('/')+1).indexOf('.') == '-1' || output.innerHTML.substr(output.innerHTML.indexOf('-')+1).indexOf('.') == '-1' ){
                             output.innerHTML += e.target.defaultValue;
                         }
