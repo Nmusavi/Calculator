@@ -28,7 +28,7 @@ for(let i=0;i<hello.length;i++)
                     let number1= parseFloat(output.innerHTML.slice(0,output.innerHTML.indexOf('/')));
                     let number2=parseFloat(output.innerHTML.slice(output.innerHTML.indexOf('/')+1));
                     output.innerHTML = number1 / number2 ;
-                }else  if(!(output.innerHTML.substr(1)).includes('-') && output.innerHTML.includes('-') && !isNaN(output.innerHTML.slice(output.innerHTML.lastIndexOf())) )
+                }else  if((output.innerHTML.substring(1)).includes('-') && output.innerHTML.includes('-') && !isNaN(output.innerHTML.slice(output.innerHTML.lastIndexOf())) )
                 {   
                     let number1= parseFloat(output.innerHTML.slice(0,output.innerHTML.indexOf('-')));
                     let number2=parseFloat(output.innerHTML.slice(output.innerHTML.indexOf('-')+1));
@@ -36,9 +36,9 @@ for(let i=0;i<hello.length;i++)
                 }else  if((output.innerHTML.substr(1)).includes('-') && !isNaN(output.innerHTML.slice(output.innerHTML.lastIndexOf())) )
                 {   
                     let number1= '-' + parseFloat(output.innerHTML.slice(1,output.innerHTML.indexOf('-')-1));
-                     console.log(number1);
+                    
                      let number2=parseFloat(output.innerHTML.slice(((output.innerHTML.substr(1)).indexOf('-')+2)));
-                     console.log(number2); 
+                    
                     output.innerHTML = number1 - number2 ;
                 }
             }
